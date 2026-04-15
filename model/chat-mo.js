@@ -1,11 +1,10 @@
 const { readFileChat, writeFileChat } = require("../utils/paging.js");
 
 module.exports = class Chat {
-  constructor(content) {
-    this.conten = content;
-  }
-  nhapChat(cb) {
-    writeFileChat(this, (x) => {
+  constructor(userId, content) {}
+
+  static nhapChat(data, cb) {
+    writeFileChat(data, (x) => {
       cb(x);
     });
   }

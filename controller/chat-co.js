@@ -8,8 +8,7 @@ exports.docChat = (req, res, next) => {
 
 exports.nhapChat = (req, res, next) => {
   const info = req.body;
-  const nn = new Chat(info.content);
-  nn.nhapChat(info, (x) => {
+  Chat.nhapChat(info, (x) => {
     res.json({ msg: x });
   });
 };
