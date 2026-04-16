@@ -9,7 +9,9 @@ module.exports = class User {
   static login(user, cb) {
     readFileUser((x) => {
       if (x && x.length > 0) {
-        const userX = x.findIndex((y) => y.userId == user.userId);
+        const userX = x.findIndex(
+          (y) => y.userId == user.userId && y.pass == user.pass,
+        );
         if (userX >= 0) cb(x[userX]);
         else cb(null);
       } else cb(null);
