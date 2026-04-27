@@ -11,7 +11,6 @@ const pChat = path.join(
   "json",
   "chat.json",
 );
-
 exports.readFileUser = (cb) => {
   fs.readFile(pUser, (er, data) => {
     if (er) console.log(er.message);
@@ -39,4 +38,17 @@ exports.writeFileChat = (data, cb) => {
 exports.radomId = () => {
   const tt = Math.trunc(Math.random() * 10000 + 1);
   return tt;
+};
+exports.radomName = () => {
+  const tt = Math.trunc(Math.random() * 1000 + 1);
+  return tt + "";
+};
+exports.removeAllFile = (thumuc) => {
+  fs.promises
+    .readdir(thumuc)
+    .then((files) => {
+      for (file of files) fs.promises.unlink(path.join(thumuc, file));
+      console.log("đã xoá all file");
+    })
+    .catch((er) => console.log(er.message));
 };
