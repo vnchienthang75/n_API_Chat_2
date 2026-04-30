@@ -26,17 +26,14 @@ app.post("/postfile", upload.single("file"), (req, res, next) => {
   const info = req.body;
   const tt = {
     userId: info.userId,
-    content:
-      `<a href='${info.link}file/${req.file.filename}' download= '${req.file.filename}'>` +
-      req.file.filename +
-      `</a>`,
+    content: req.file.filename,
     type: "file",
   };
   Chat.docChat((x) => {
     const xx = [...x];
     xx.push(tt);
-    io.emit("message", xx);
     Chat.nhapChat(xx, (y) => {
+      io.emit("message", xx);
       res.json({ msg: y });
     });
   });
