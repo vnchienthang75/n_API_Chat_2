@@ -33,8 +33,7 @@ app.post("/postfile", upload.single("file"), (req, res, next) => {
     const xx = [...x];
     xx.push(tt);
     Chat.nhapChat(xx, (y) => {
-      io.emit("message", xx);
-      res.json({ msg: y });
+      res.json({ msg: y, xx: xx });
     });
   });
 });
