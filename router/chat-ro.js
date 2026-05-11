@@ -3,6 +3,5 @@ const router = express.Router();
 const ControllerChat = require("../controller/chat-co.js");
 router.get("/docchat", ControllerChat.docChat);
 router.post("/nhapchat", ControllerChat.nhapChat);
-router.get("/xoachat", ControllerChat.xoaChat);
 
 module.exports = router;
